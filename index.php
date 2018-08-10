@@ -165,7 +165,7 @@
             <div class="clr"></div>
 		            <div class="menu">
 		                <div class="logo">
-		                	<img src="images/logo_nexttech.png" width="323" border="0" alt="logo" style="height: 86px" />
+		                	<img src="images/logo-aec.png" width="342" border="0" alt="logo" style="height: 86px" />
 		                </div>
 		                <?php
 		                if( $status_user == 1 )
