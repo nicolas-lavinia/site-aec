@@ -4,23 +4,26 @@
             document.getElementById('v_nova_senha1').value = '';
             document.getElementById('v_nova_senha2').value = '';
 
-    		if (display == "hidden") {
+            if(display == "hidden")
+            {
             	document.getElementById('nova_senha1').style.visibility = 'visible';
             	document.getElementById('nova_senha2').style.visibility = 'visible';
             }
-    		else {
+            else
+            {
             	document.getElementById('nova_senha1').style.visibility = 'hidden';
             	document.getElementById('nova_senha2').style.visibility = 'hidden';
             }
         }
     </script>
-                
+              
 	<style type="text/css">
-    .style2 {
+        .style2
+        {
             width: 80px;
         }
-
-    .style3 {
+        .style3
+        {
             font-family: Arial, Helvetica, sans-serif;
             font-weight: bold;
             font-size: small;
@@ -43,8 +46,8 @@
                     </h3>
 					
 					<br />
-					
-					<form action='index.php' method='post' >
+						
+					<form method='post' >
 					
 						<table>
 							<tr>
@@ -60,11 +63,12 @@
                                     <span class="style3">Senha</span>
                                 </td>
 								<td class="style2">
-                                    <span class="style3"><input type='password' name='senha' maxlength=8 style="width:150px;"/></span>
+                                    <span class="style3"><input type='password' name='senha' maxlength=8 style="width:150px;" /></span>
                                 </td>
 							</tr>
 							<tr>
-                				<td class="style2"></td>
+                                <td class="style2">
+                                </td>
                                 <td class="style2" style="width:150px;" colspan=2>
                                 	<span class="style3"><input type="checkbox" name="alt_senha" onclick="Mudarestado()"> Alterar Senha</span>
                                 </td>
@@ -75,7 +79,7 @@
                                     <span class="style3">Nova Senha</span>
                                 </td>
 								<td class="style2">
-                                    <span class="style3"><input type='password' name='nova_senha1' id='v_nova_senha1' maxlength=8 /></span>
+                                    <span class="style3"><input type='password' name='nova_senha1' id='v_nova_senha1' maxlength=10 /></span>
                                 </td>
 							</tr>
 							<tr id="nova_senha2" style="visibility:hidden;">
@@ -83,32 +87,32 @@
                                     <span class="style3">Confirme</span>
                                 </td>
 								<td class="style2">
-                                    <span class="style3"><input type='password' name='nova_senha2' id='v_nova_senha2' maxlength=8 /></span>
+                                    <span class="style3"><input type='password' name='nova_senha2' id='v_nova_senha2' maxlength=10 /></span>
                                 </td>
 							</tr>
 							<tr>
-                				<td class="style">
-                    				<br />
+                                <td class="style2">
+
                                 </td>
                                 <td>
                                     <input type='submit' value='Login' >
                                 </td>
                             </tr>
-                            
 						</table>
 					</form>
-					<?php
-					if( $senha_invalida == 1 ) { 
-						echo '<script type="text/javascript">alert( "Usuário ou Senha Inválida!" );</script>';
-					}
-					else if( $senha_invalida == 2 ) { 
-						echo '<script type="text/javascript">alert( "Nova senha inválida! Utilize entre 1 e 8 dígitos." );</script>';
-					}
-					else if( $senha_invalida == 3 ) {
-						echo '<script type="text/javascript">alert( "Falha na verificação da nova senha!" );</script>';
-					}
-					else if( $senha_invalida == 4 ) {
-						echo '<script type="text/javascript">alert( "A nova senha deve ser diferente da atual!" );</script>';
-					}
-					?>
 				</div>
+				
+				<?php
+				if( $senha_invalida == 1 ) {
+					echo '<script type="text/javascript">alert( "Usuário ou Senha Inválida!" );</script>';
+				}
+				else if( $senha_invalida == 2 ) {
+					echo '<script type="text/javascript">alert( "Nova senha inválida!" );</script>';
+				}
+				else if( $senha_invalida == 3 ) {
+					echo '<script type="text/javascript">alert( "Falha na verificação da nova senha! Utilize entre 1 e 8 dígitos." );</script>';
+				}
+				else if( $senha_invalida == 4 ) {
+					echo '<script type="text/javascript">alert( "A nova senha deve ser diferente da atual!" );</script>';
+				}
+				?>
