@@ -77,15 +77,6 @@
 					$query = "UPDATE rede SET hostname='$hostname', dhcp = '$dhcp0', ip='$ip0', mask='$mask0', gw='$gw0', dns='$dns0', up_date = 1 WHERE id = 1";
 					$mysqli->query($query);
 					
-					$dhcp1 = $_POST[ "dhcp1" ];
-					$ip1 = $_POST[ "ip1" ];
-					$mask1 = $_POST[ "mask1" ];
-					$gw1 = $_POST[ "gw1" ];
-					$dns1 = $_POST[ "dns1" ];
-						
-					$query = "UPDATE rede SET hostname='$hostname', dhcp = '$dhcp1', ip='$ip1', mask='$mask1', gw='$gw1', dns='$dns1', up_date = 1 WHERE id = 2";
-					$mysqli->query($query);
-					
 					$restart = 1;
 				}
 				else
@@ -108,21 +99,11 @@
 					<div class="painel_e">	
 						<?php 
                                 $query = "SELECT mac, hostname, dhcp, ip, mask, gw, dns FROM rede WHERE id = 1";
-                                if( $stmt = $mysqli->prepare( $query ) )
-                                {
-	                                $stmt->execute();                           // Executa a query preparada.
-	                                $stmt->store_result();
-	                                $stmt->bind_result( $mac0, $hostname, $dhcp0, $ip0, $mask0, $gw0, $dns0 );
-	                                $stmt->fetch();
-                                }
-                                $query = "SELECT mac, hostname, dhcp, ip, mask, gw, dns FROM rede WHERE id = 2";
-                                if( $stmt = $mysqli->prepare( $query ) )
-                                {
-                                	$stmt->execute();                           // Executa a query preparada.
-                                	$stmt->store_result();
-                                	$stmt->bind_result( $mac1, $hostname, $dhcp1, $ip1, $mask1, $gw1, $dns1 );
-                                	$stmt->fetch();
-                                }
+                                $stmt = $mysqli->prepare( $query );
+                                $stmt->execute();                           // Executa a query preparada.
+                                $stmt->store_result();
+                                $stmt->bind_result( $mac0, $hostname, $dhcp0, $ip0, $mask0, $gw0, $dns0 );
+                                $stmt->fetch();
            				?>
            					
 						
@@ -171,7 +152,7 @@
 							
 							<tr>
 								<td class="style2" colspan=2>
-									Interface eth0 (VoIP) 
+									Interface eth0 
                                 </td>
 								<td class="style2">
                                 </td>
@@ -223,66 +204,6 @@
                                     <input type="text" name="dns0" value="<?php echo $dns0;?>" maxlength="15" />
                                 </td>
 							</tr>
-
-
-
-							<tr>
-								<td class="style2" colspan=2>
-									Interface eth1 (Player) 
-                                </td>
-								<td class="style2">
-                                </td>
-							</tr>
-
-							<tr>
-								<td class="style2">
-                                    DHCP:
-                                </td>
-                                <td class="style2">
-									<input type="radio" name="dhcp1" value="1" <?php if( $dhcp1 == 1 ){echo "checked";}?> onclick="desabilita_a( 1 );">Enable
-								    <br/>
-								    <input type="radio" name="dhcp1" value="0" <?php if( $dhcp1 == 0 ){echo "checked";}?> onclick="habilita_a( 1 );">Disable
-								</td>
-							</tr>
-                            
-							<tr id="ip1_manual" <?php if( $dhcp1 ){ echo "style='visibility:hidden'"; } ?> >
-								<td class="style2">
-                                    IP:
-                                </td>
-								<td class="style2">
-                                    <input type="text" name="ip1" value="<?php echo $ip1;?>" maxlength="15" />
-                                </td>
-							</tr>
-							
-							<tr id="mask1_manual" <?php if( $dhcp1 ){ echo "style='visibility:hidden'"; } ?>>
-								<td class="style2">
-                                    M&aacute;scara:
-                                </td>
-								<td class="style2">
-                                    <input type="text" name="mask1" value="<?php echo $mask1;?>" maxlength="15" />
-                                </td>
-							</tr>
-								
-							<tr id="gw1_manual" <?php if( $dhcp1 ){ echo "style='visibility:hidden'"; } ?>>
-								<td class="style2">
-                                    Gateway:
-                                </td>
-								<td class="style2">
-                                    <input type="text" name="gw1" value="<?php echo $gw1;?>" maxlength="15" />
-                                </td>
-							</tr>
-								
-							<tr id="dns1_manual" <?php if( $dhcp1 ){ echo "style='visibility:hidden'"; } ?>>
-								<td class="style2">
-                                    DNS:
-                                </td>
-								<td class="style2">
-                                    <input type="text" name="dns1" value="<?php echo $dns1;?>" maxlength="15" />
-                                </td>
-							</tr>
-
-
-
 
 							<tr>
                                 <td class="style2">

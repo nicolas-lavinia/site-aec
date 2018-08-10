@@ -26,8 +26,7 @@
 						if( $status_user == 1 )
 						{
 							$_SESSION = array();
-			
-							require("../comum/db_connect.php");
+
 							$stmt = $mysqli->prepare("SELECT QtdDias FROM cadusu WHERE login = ?");
 							$stmt->bind_param('s', $login );
 							$stmt->execute();
@@ -45,7 +44,6 @@
 								$vence = '2099-12-31 23:59:59';
 							}
 								
-							require("../comum/db_connect.php");
 							$query = "UPDATE cadusu SET Senha='$nova_senha1', ExpiraEm = '$vence' WHERE Login = '$login'";
 							$mysqli->query($query);
 			
